@@ -24,7 +24,7 @@ export const generateRandomFireflies = (amount: number): THREE.Group => {
 
     firefly.position.x = (Math.random() - 0.5) * 12;
     firefly.position.z = (Math.random() - 0.5) * 10;
-    firefly.position.y = Math.random() + 0.4;
+    firefly.position.y = Math.random() * 2 + 0.4;
 
     firefly.userData = {
       phase: Math.random() * Math.PI * 2,

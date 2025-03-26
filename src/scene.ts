@@ -542,8 +542,6 @@ const firefliesTweaks = gui.addFolder("Fireflies");
 
 firefliesTweaks
   .add(firefliesParams, "amount")
-  .min(0)
-  .max(1000)
   .step(1)
   .onFinishChange((value: number) => {
     disposeGroup(fireflies);
@@ -551,7 +549,7 @@ firefliesTweaks
     scene.add(fireflies);
   });
 
-function disposeGroup(group: THREE.Group): void {
+const disposeGroup = (group: THREE.Group) => {
   group.traverse((child) => {
     if (child instanceof THREE.Mesh) {
       child.geometry.dispose();
@@ -563,12 +561,10 @@ function disposeGroup(group: THREE.Group): void {
       }
     }
   });
-
-  // Remove group from parent if it exists
   if (group.parent) {
     group.parent.remove(group);
   }
-}
+};
 
 const timer = new Timer();
 const animateFireflies = () => {
@@ -583,7 +579,8 @@ const animateFireflies = () => {
 
     firefly.position.x = Math.cos(angle) * radius;
     firefly.position.z = Math.sin(angle) * radius;
-    firefly.position.y = 0.4 + Math.abs(Math.sin(angle * 0.5)) * 0.6;
+    firefly.position.y =
+      Math.sin(angle) * Math.sin(angle * 1.25) * Math.sin(angle * 3) + 1;
   });
 };
 animateFireflies();
