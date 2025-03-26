@@ -154,9 +154,7 @@ const streetLight = new THREE.Group();
 const streetLightColor = textureLoader.load("./street_light/color.webp");
 streetLightColor.colorSpace = THREE.SRGBColorSpace;
 const streetLightARM = textureLoader.load("./street_light/arm.webp");
-const streetLightNormal = textureLoader.load(
-  "./street_light/streetLightNormal.webp"
-);
+const streetLightNormal = textureLoader.load("./street_light/normal.webp");
 
 const streetLightTextureRepetition = {
   x: 2,
